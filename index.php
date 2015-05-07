@@ -10,8 +10,24 @@ define('ImageDirectory', 'pics/');
 
 ?>
 
-CLIENT INFO
+<!-- CLIENT INFO
 CLIENT ID	cda6ee6664f9482e8b14c0695678c53a
 CLIENT SECRET	31ae98225a2040308165d350229869c8
 WEBSITE URL	http://localhost;8888/instagram/index.php
-REDIRECT URI	http://localhost;8888/instagram/index.php
+REDIRECT URI	http://localhost;8888/instagram/index.php -->
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="decription" context="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Untitled</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css"> 
+		<link rel="author" href="humans.txt">
+	</head>
+	<body>
+
+	<a href="https:api.instagram.com/oauth/authorize/?client_id=<?php echo clientID; ?>&redirect_uri=<?php echo redirectURI; ?>&response_type=code">Login</a>
+	<script type="text/javascript" src="js/main.js"></script>
+	</body>
+</html>
