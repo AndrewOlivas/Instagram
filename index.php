@@ -22,6 +22,14 @@ function connectToInstagram($url){
 	return $result;
 }
 
+function getUserID($userName){
+	$url = 'https://api.instagram.com/v1/users/search?q='.$userName._'&client_id'.clientID;
+	$instagramInfo = connectToInstagram($url);
+	$results = json_decode($instagramInfo, true);
+
+	echo $results['data']['0']['id'];
+}
+
 if (isset($_GET['code'])){
 	$code = ($_GET['code']);
 	$url = 'https://api.instagram.com/oauth/access_token';
