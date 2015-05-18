@@ -62,14 +62,15 @@ if (isset($_GET['code'])){
 	curl_init($curl, CURLOPT_POST, true);
 	curl_init($curl, CURLOPT_POSTFIELDS, $access_token_settings);
 	curl_init($curl, CURLOPT_RETURNTRANSFER, 1);
-	curl_init($curl, CURLOPT_SSL_VERIFYPEER, false );
+	curl_init($curl, CURLOPT_SSL_VERIFYPEER, false);
 
 $result = curl_exec($curl);
+
 curl_close($curl);
 
-$result = json_decode($result, true);
+$results = json_decode($result, true);
 
-echo $results['user']['username'];
+$userName = $results['user']['username'];
 
 $userID = getUserID($userName);
 
