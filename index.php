@@ -4,7 +4,7 @@ ini_set('default_socket_timeout', 300);
 session_start();
 
 define('clientID', 'cda6ee6664f9482e8b14c0695678c53a'); 
-define('clientSecret', '60bc0c4f4b3a4c3a97583145f696ede2'); 
+define('clientSecret', '31ae98225a2040308165d350229869c8'); 
 define('redirectURI', 'http://localhost/instagram/index.php'); 
 define('ImageDirectory', 'pics/');
 
@@ -27,7 +27,7 @@ function getUserID($userName){
 	$instagramInfo = connectToInstagram($url);
 	$results = json_decode($instagramInfo, true);
 
-	echo $results['data'][0]['id'];
+	return $results['data'][0]['id'];
 }
 
 function printImages($userID){
@@ -52,17 +52,17 @@ if (isset($_GET['code'])){
 	$code = $_GET['code'];
 	$url = 'https://api.instagram.com/oauth/access_token';
 	$access_token_settings = array('client_id' => clientID,
-									'cliend_secret' => clientSecret,
+									'client_secret' => clientSecret,
 									'grant_type' => 'authorization_code',
 									'redirect_uri' => redirectURI,
 									'code' => $code
 									);
 
 	$curl = curl_init($url);
-	curl_init($curl, CURLOPT_POST, true);
-	curl_init($curl, CURLOPT_POSTFIELDS, $access_token_settings);
-	curl_init($curl, CURLOPT_RETURNTRANSFER, 1);
-	curl_init($curl, CURLOPT_SSL_VERIFYPEER, false);
+	curl_setopt($curl, CURLOPT_POST, true);
+	curl_setopt($curl, CURLOPT_POSTFIELDS, $access_token_settings);
+	curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 
 $result = curl_exec($curl);
 
